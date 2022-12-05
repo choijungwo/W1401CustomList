@@ -42,20 +42,22 @@ class MainActivity : AppCompatActivity() {
 
     inner class SongAdapter : RecyclerView.Adapter<SongAdapter.ViewHolder>(){
         inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-            //val txText: TextView = itemView.findViewById(android.R.id.text1)
-            //val txText = itemView.findViewById(android.R.id.text1) as TextView
-            val txTitle = itemView.findViewById<TextView>(android.R.id.text1)
-            val txSinger = itemView.findViewById<TextView>(android.R.id.text2)
+            //val txTitle: TextView = itemView.findViewById(android.R.id.text1)
+            //val txSinger: TextView = itemView.findViewById(android.R.id.text2)
+            val txTitle: TextView = itemView.findViewById(R.id.text1)
+            val txSinger: TextView = itemView.findViewById(R.id.text2)
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val view = layoutInflater.inflate(android.R.layout.simple_list_item_2,parent,false)
+            val view = layoutInflater.inflate(R.layout.item_song,
+                parent,
+                false)
             return ViewHolder(view)
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.txTitle.text = model.list.value?.get(position)?.title ?: null
-            holder.txSinger.text = model.list.value?.get(position)?.singer ?: null
+            holder.txTitle.text = model.list.value?.get(position)?.title
+            holder.txSinger.text = model.list.value?.get(position)?.singer
         }
 
         override fun getItemCount() = model.list.value?.size ?: 0
